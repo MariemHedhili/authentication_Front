@@ -4,31 +4,18 @@ pipeline{
     
     stages {
         
-        stage('build'){
+        stage('Git Checkout'){
             
             steps{
                 
-                echo 'build'
-            }
-        }
-        stage('deploy'){
-            
-            steps{
-                
-                echo 'deploy'
-            }
-        }
-        
-      
-        stage('docker'){
-            
-            steps{
-                
-                echo 'docker'
+                script{
                     
+                    git branch: 'main', url: 'https://github.com/MariemHedhili/authentication_Front.git'
                 }
-            
+            }
         }
+       
+       
         }
         
 }
