@@ -14,7 +14,18 @@ pipeline{
                 }
             }
         }
-       
+        stage('npm Build'){
+            
+            steps{
+                
+                script{
+                    
+                    nodejs('Node-20.10'){
+                      sh ' npm install '
+                    }   
+                }
+            }
+        }
        
         }
         
