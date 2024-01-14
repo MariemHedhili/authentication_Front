@@ -13,12 +13,12 @@ pipeline{
                 }
             }
         }
-        stage('npm Build'){
+        
+        stage('npm install'){
             
             steps{             
-                  node --version
-                  cd frontend
-                  sh 'npm install'
+                  
+                sh 'npm install'
                        
                 
             }
