@@ -16,7 +16,8 @@ pipeline{
         stage('npm Build'){
             
             steps{             
-                                   
+                  node --version
+                  cd frontend
                   sh 'npm clean install'
                        
                 
