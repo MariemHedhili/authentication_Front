@@ -16,13 +16,11 @@ pipeline{
         }
         stage('npm Build'){
             
-            steps{
-                
-                script{
+            steps{             
                     
-                    nodejs('Node-20.10'){
-                      sh ' npm install '
-                    }   
+                    nodejs('Node-20.10') {
+                      sh 'npm install'
+                       
                 }
             }
         }
