@@ -22,7 +22,10 @@ pipeline{
             
             steps{             
                   
-                sh 'npm install'
+                script{
+                    
+                   sh 'npm install'
+                }
                                        
             }
         }
