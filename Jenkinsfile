@@ -1,10 +1,6 @@
 pipeline{
     
     agent any 
-    environment {
-        NODEJS_HOME = tool 'NodeJS' 
-        PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
-    }
     stages {
         
         stage('Git Checkout'){
@@ -21,7 +17,7 @@ pipeline{
             
             steps{             
                                    
-                  sh 'npm install'
+                  sh 'npm clean install'
                        
                 
             }
