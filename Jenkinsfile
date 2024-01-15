@@ -15,7 +15,7 @@ pipeline{
             }
         }
         
-        stage('Build Angular App') {
+        stage('Buil Angular App') {
             steps {
                 script {
                     // Use the Node.js and npm installation defined in Jenkins configuration
@@ -31,6 +31,24 @@ pipeline{
             }
         }
        
+        stage('SonarQube Analysis') {
+            environment {
+                SCANNER_HOME = tool 'sonar4'
+                PROJECT_NAME = "FrontEndUserApp"
+            }
+            steps {
+              
+                
+                withSonarQubeEnv(credentialsId: 'sonar-credentials',installationName: 'SonarQube') {
+                    sh """$SCANNER_HOME/bin/sonar-scanner \
+                        -Dsonar.projectKey=$PROJECT_NAME \
+                        -Dsonar.sources=. """
+                    
+                }
+
+                
+            }
+        }
         }
         
 }
