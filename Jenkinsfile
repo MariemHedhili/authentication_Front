@@ -43,11 +43,17 @@ pipeline{
                         -Dsonar.projectKey=$PROJECT_NAME \
                         -Dsonar.sources=. """
                     
-                }
-
-                
+                }              
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dir('frontend') {
+                        sh 'docker build -t authentication-front .'
+                    }
+                }
+            }
         }
         
 }
