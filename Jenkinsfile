@@ -24,6 +24,7 @@ pipeline{
                     // Change to the Angular app directory
                     dir('frontend') {
                         // Install dependencies and node modules
+                        
                         sh 'npm install'
                     }
                 }
