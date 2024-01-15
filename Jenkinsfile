@@ -33,12 +33,11 @@ pipeline{
        
         stage('SonarQube Analysis') {
             environment {
-                SCANNER_HOME = tool 'sonar4'
-                PROJECT_NAME = "FrontEndUserApp"
+                SCANNER_HOME = tool 'SonarQube'
+                PROJECT_NAME = "authentication_Front"
             }
             steps {
-              
-                
+                            
                 withSonarQubeEnv(credentialsId: 'sonar-credentials',installationName: 'SonarQube') {
                     sh """$SCANNER_HOME/bin/sonar-scanner \
                         -Dsonar.projectKey=$PROJECT_NAME \
