@@ -22,7 +22,7 @@ pipeline{
                     def nodejsInstallation = tool name: 'node:20.10', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
                     env.PATH = "${nodejsInstallation}/bin:${env.PATH}"
                     // Change to the Angular app directory
-                    dir('angular-app') {
+                    dir('frontend') {
                         // Install dependencies and node modules
                         sh 'npm install'
                     }
