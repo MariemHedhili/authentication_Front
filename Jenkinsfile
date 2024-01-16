@@ -74,7 +74,7 @@ pipeline{
                         sh "echo \${DOCKERHUB_PASSWORD} | docker login -u \${DOCKERHUB_USERNAME} --password-stdin"
                         // Add the docker push step here
                         docker.withRegistry("https://registry.hub.docker.com", 'dockerhub-credentials') {
-                            docker.image("${DOCKERHUB_USERNAME}/auth-front:frontapp-${env.BUILD_NUMBER}").push()
+                            docker.image("${DOCKERHUB_USERNAME}/auth-front:authentication-front-${env.BUILD_NUMBER}").push()
                         }
                     }
                 }
