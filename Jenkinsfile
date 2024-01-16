@@ -46,6 +46,14 @@ pipeline{
                 }              
             }
         }
+
+        stage('Upload frontend application to nexus') {
+            steps {
+                
+                sh "tar -czvf frontapp.tar.gz ./frontend"
+                nexusArtifactUploader artifacts: [[artifactId: 'frontapp', classifier: '', file: 'frontapp.tar.gz', type: 'tar.gz']], credentialsId: 'nexus-credentials', groupId: 'frontend', nexusUrl: 'nexus:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'npm-central-repo', version: "1.${env.BUILD_NUMBER}.0"
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 script {
