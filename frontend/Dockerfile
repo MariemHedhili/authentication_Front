@@ -1,9 +1,9 @@
 FROM node:18-alpine as build-stage
 RUN mkdir -p /app
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+#COPY package*.json ./
 COPY .. .
+RUN npm install
 RUN npm run build
 
 # Stage 2: Serve the angular app with Nginx
