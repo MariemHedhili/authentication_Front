@@ -4,7 +4,7 @@ WORKDIR /app
 #COPY package*.json ./
 COPY .. .
 RUN npm install
-RUN npm build
+RUN npm run build
 
 # Stage 2: Serve the angular app with Nginx
 FROM nginx:alpine
