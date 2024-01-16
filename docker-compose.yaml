@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+
+  front:
+    image: meriemhedhili/auth-front:authentication-front-21
+    container_name: frontapp
+    ports:
+      - "4200:4200"
+      
+    
