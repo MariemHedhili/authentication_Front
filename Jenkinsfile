@@ -1,5 +1,6 @@
 pipeline{
     
+
     agent any 
     
     stages {
@@ -47,7 +48,7 @@ pipeline{
             }
         }
 
-        stage('Upload frontend application to nexus') {
+        stage('Upload app to nexus') {
             steps {
                 
                 sh "tar -czvf frontapp.tar.gz ./frontend"
@@ -62,6 +63,23 @@ pipeline{
                     }
                 }
             }
+        }
+
+        stage('Push image to DockerHub') {
+            
+            steps {
+                script {
+               
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+                        sh "echo \${DOCKERHUB_PASSWORD} | docker login -u \${DOCKERHUB_USERNAME} --password-stdin"
+                        // Add the docker push step here
+                        docker.withRegistry("https://registry.hub.docker.com", 'dockerhub-credentials') {
+                            docker.image("${DOCKERHUB_USERNAME}/auth-front:frontapp-${env.BUILD_NUMBER}").push()
+                        }
+                    }
+                }
+            }
+            
         }
     }     
 }
