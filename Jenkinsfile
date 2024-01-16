@@ -59,7 +59,7 @@ pipeline{
             steps {
                 script {
                     dir('frontend') {
-                        sh 'docker build -t authentication-front .'
+                        sh "docker build -t meriemhedhili/auth-front:authentication-front-${env.BUILD_NUMBER} ."
                     }
                 }
             }
