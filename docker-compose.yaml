@@ -3,7 +3,7 @@ version: '3'
 services:
 
   front:
-    image: meriemhedhili/auth-front:authentication-front-37
+    image: meriemhedhili/auth-front:authentication-front-38
     container_name: frontapp
     ports:
       - "4200:4200"
