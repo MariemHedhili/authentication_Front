@@ -16,7 +16,7 @@ pipeline{
             }
         }
         
-        stage('Buil Angular App') {
+        stage('Build Angular App') {
             steps {
                 script {
                     // Use the Node.js and npm installation defined in Jenkins configuration
